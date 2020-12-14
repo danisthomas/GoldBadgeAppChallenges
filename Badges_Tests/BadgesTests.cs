@@ -42,22 +42,7 @@ namespace Badges_Tests
             Assert.IsNotNull(contentFromDictionary);
 
         }
-        //Read
-        //[TestMethod]
-        //public void ListExistingBadges_ShouldGetNotNull()
-        //{
-        //    //Arrange-TestInitialize
-        //    // Badges newContent = new Badges(1234, new List<string> { "A4", "B5", "C3" }, "John Doe");
-
-        //    //Act
-        //    _repo.GetListofBadges();
-
-        //    //Assert
-        //    Assert.IsNotNull();
-
-            
-        //}
-
+       
         //Delete
 
         [TestMethod]

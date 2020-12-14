@@ -15,15 +15,12 @@ namespace Challenge_01_Cafe
         public void AddMealsToMenu(CafeMenuItems meal)
         {
             _listofmeals.Add(meal);
-
         }
 
         //Read
-
         public List<CafeMenuItems> GetListAllMenuItems()
         {
             return _listofmeals;
-
         }
 
     
@@ -35,7 +32,6 @@ namespace Challenge_01_Cafe
 
             CafeMenuItems oldContent = GetListAllMenuItemsByMenuID(originalMealID);
             if (oldContent != null)
-
             {
                 oldContent.Name = newContent.Name;
                 oldContent.MenuID = newContent.MenuID;
@@ -48,7 +44,6 @@ namespace Challenge_01_Cafe
             else
             {
                 return false;
-
             }
         }
         //Delete
@@ -69,7 +64,6 @@ namespace Challenge_01_Cafe
             if (initialCount > _listofmeals.Count)
             {
                 return true;
-
             }
             else
             {

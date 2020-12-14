@@ -11,8 +11,7 @@ namespace Claims_Tests
         private ClaimsRepository _repo;
         
         private Claims _claim;
-    
-    
+       
         [TestInitialize]
         public void Arrange()
         {
@@ -23,7 +22,6 @@ namespace Claims_Tests
             _claim = new Claims(1,ClaimType.Car,"Breakin",500,oneIncident,oneClaim,true);
 
             _repo.AddClaimsToList(_claim);
-
         }
         //Add Method
         [TestMethod]
@@ -42,9 +40,5 @@ namespace Claims_Tests
             //Assert
             Assert.IsNotNull(contentFromDirectory);
         }
-        //Update- No update Method
-
-        
-        
     }
 }

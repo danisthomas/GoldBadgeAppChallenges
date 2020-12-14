@@ -91,26 +91,19 @@ namespace Badges_Console
                 Console.WriteLine("Would you like to add another door? Y or N");
                 string addAnotherDoor = Console.ReadLine().ToLower();
             while (addAnotherDoor == "y") 
-            {
-                
-
-                   
+            {                                  
                     Console.WriteLine("Enter a door the badge needs access to:");
                     string nextdoorToAdd = Console.ReadLine();
                     doorList.Add(nextdoorToAdd);
 
                     Console.WriteLine("Would you like to add another door? Y or N");
-                    addAnotherDoor = Console.ReadLine().ToLower();
-
-                
-                
+                    addAnotherDoor = Console.ReadLine().ToLower();                
             }
             
             _contentBadgesRepository.CreateNewBadge(newBadge);
           
             Console.WriteLine("Press any key to return to Menu:");
             Console.ReadKey();
-
         }
 
         public void UpdateBadge()
@@ -129,18 +122,15 @@ namespace Badges_Console
                 $"2. Add a Door.");
             
             int updateDoors = int.Parse(Console.ReadLine());
-
-            
+           
             if (updateDoors == 1 && badge.BadgeID == badgeIdToUpdate)
-            {
-                
+            {                
                 Console.WriteLine("Enter Door you want to remove:");
                 string deleteDoor = Console.ReadLine();
                 currentDoors.Remove(deleteDoor);
                 string s3 = string.Join(",", currentDoors);
 
-                Console.WriteLine($"{badge.BadgeID} has access to doors {s3}.");
-                    
+                Console.WriteLine($"{badge.BadgeID} has access to doors {s3}.");                   
             }
             else
             {
@@ -150,13 +140,11 @@ namespace Badges_Console
                 string s2 = string.Join(",", currentDoors);
                 Console.WriteLine($"{badge.BadgeID} has access to doors {s2}.");
             }
-
         }
 
         public void ListAllBadges()
         {
            Dictionary<int, Badges> dictOfBadges = _contentBadgesRepository.GetDictOfBadges();
-
 
             Console.Clear();
             Console.WriteLine("Badge#:\t\t" + "Door Access");
@@ -167,13 +155,7 @@ namespace Badges_Console
                 string s1 = string.Join(",", currentdoors);
 
                 Console.WriteLine($"{badge.Key}\t\t {s1}");
-            }
-            
-            
-               
-            
-
-
+            }           
         }
 
         public void  GetListOfDoors()
@@ -183,49 +165,18 @@ namespace Badges_Console
             foreach(string doors in listOfDoors)
             {
                 Console.WriteLine(doors);
-            }
-            
+            }            
         }
-
-        //public void DisplayBadges(Badges badges)
-        //{
-        //    Dictionary<int, Badges> dictOfBadges = _contentBadgesRepository.GetDictOfBadges();
-        //    List<Badges> listOfBadges = _contentBadgesRepository.GetListofBadges();
-
-        //    foreach (KeyValuePair<int, Badges> badge in _badgeDict )
-        //    {
-        //       if (!_badgeDict.ContainsKey(badge.Key))
-        //       {
-        //            Console.WriteLine($"{badges.DoorNames)
-        //       }
-        //        else
-        //        {
-        //            return null;
-        //        }
-        //    }
-        //}
 
         //Seed List
         public void SeedContentList()
         {
-            // List<string> doorList = new List<string>();
-
-            //string badgeOneDoors = "A4";
-
-            // doorList.Add(badgeOneDoors);
-           
-
-
             Badges badgeOne = new Badges(1234, new List<string> {"A4","B5","C3"}, "John Doe");
             Badges badgeTwo = new Badges(2234, new List<string> { "A1", "B3" }, "Jane Tucker");
             Badges badgeThree = new Badges(4435, new List<string> { "C3", "D2", "A1" }, "Joan Jett");
             _contentBadgesRepository.CreateNewBadge(badgeOne);
             _contentBadgesRepository.CreateNewBadge(badgeTwo);
-            _contentBadgesRepository.CreateNewBadge(badgeThree);
-
-            
-
-                
+            _contentBadgesRepository.CreateNewBadge(badgeThree);                
         }
     }
 }

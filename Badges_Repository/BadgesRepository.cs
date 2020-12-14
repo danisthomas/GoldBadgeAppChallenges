@@ -22,8 +22,6 @@ namespace Badges_Repository
         {
             _badgeDict.Add(badges.BadgeID, badges);
             _listofBadges.Add(badge);
-
-
         }
 
 
@@ -32,7 +30,6 @@ namespace Badges_Repository
         public Dictionary<int, Badges> GetDictOfBadges()
         {
             return _badgeDict;
-
         }
 
         public List<Badges> GetListofBadges()
@@ -54,13 +51,10 @@ namespace Badges_Repository
             if (badge.BadgeID != badgeID)
             {
                 return false;
-
             }
             int initialCount = _badgeDict.Count;
 
             _badgeDict.Remove(badge.BadgeID);
-
-
 
             if (initialCount > _badgeDict.Count)
             {
@@ -88,10 +82,8 @@ namespace Badges_Repository
                 {
                     return null;
                 }
-
             }
             return null;
         }
-
     }
 }

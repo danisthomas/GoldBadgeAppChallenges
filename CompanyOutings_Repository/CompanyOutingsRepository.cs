@@ -12,17 +12,13 @@ namespace CompanyOutings_Repository
         public IOutings BowlingOutings = new Bowling();
         public IOutings AmusementParkOuting = new AmusementPark();
         public IOutings ConcertOutings = new Concert();
-
-
         public List<IOutings> _listOfOutings = new List<IOutings>();
-
 
         //Create
 
         public void CreateNewOuting(IOutings companyOutings)
         {
             _listOfOutings.Add(companyOutings);
-
         }
 
         //Read
@@ -48,8 +44,6 @@ namespace CompanyOutings_Repository
                     listOfGolfOutings.Add(cost);
                     double sum1 = listOfGolfOutings.Sum();
                     ListOfAllCosts.Add(sum1);
-
-
                 }
 
                 if (outings.TypeOfOuting == OutingType.Bowling)
@@ -77,8 +71,6 @@ namespace CompanyOutings_Repository
                 }
             }
             return ListOfAllCosts;
-
-
         }
         public List<double> GetListOfGolfOutingsRunningTotal()
         {
@@ -93,8 +85,7 @@ namespace CompanyOutings_Repository
                     double cost = outings.CostPerEvent();
                     listOfGolfOutings.Add(cost);
                     double sum1 = listOfGolfOutings.Sum();
-                }
-                
+                }                
             }
             return listOfGolfOutings;
         }
@@ -102,7 +93,6 @@ namespace CompanyOutings_Repository
         {
             List<IOutings> listOfOutings = GetListOfOutings();
             List<double> listOfBowlOutings = new List<double>();
-
 
             foreach (IOutings outings in listOfOutings)
             {
@@ -112,7 +102,6 @@ namespace CompanyOutings_Repository
                     listOfBowlOutings.Add(cost);
                     double sum1 = listOfBowlOutings.Sum();
                 }
-
             }
             return listOfBowlOutings;
         }
@@ -120,7 +109,6 @@ namespace CompanyOutings_Repository
         {
             List<IOutings> listOfOutings = GetListOfOutings();
             List<double> listOfAmuseOutings = new List<double>();
-
 
             foreach (IOutings outings in listOfOutings)
             {
@@ -130,7 +118,6 @@ namespace CompanyOutings_Repository
                     listOfAmuseOutings.Add(cost);
                     double sum1 = listOfAmuseOutings.Sum();
                 }
-
             }
             return listOfAmuseOutings;
         }
@@ -138,7 +125,6 @@ namespace CompanyOutings_Repository
         {
             List<IOutings> listOfOutings = GetListOfOutings();
             List<double> listOfConcertOutings = new List<double>();
-
 
             foreach (IOutings outings in listOfOutings)
             {
@@ -148,7 +134,6 @@ namespace CompanyOutings_Repository
                     listOfConcertOutings.Add(cost);
                     double sum1 = listOfConcertOutings.Sum();
                 }
-
             }
             return listOfConcertOutings;
         }
