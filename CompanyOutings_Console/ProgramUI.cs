@@ -15,7 +15,7 @@ namespace CompanyOutings_Console
         private Concert concertOuting = new Concert();
         private Bowling bowlingOuting = new Bowling();
         private CompanyOutingsRepository _outingsRepo = new CompanyOutingsRepository();
-       // private List<IOutings> listOfOutings = new List<IOutings>();
+        // private List<IOutings> listOfOutings = new List<IOutings>();
 
         public void Run()
         {
@@ -32,7 +32,7 @@ namespace CompanyOutings_Console
                     "1. Display List of Outings\n" +
                     "2. Add Outing to List\n" +
                     "3. Display Total Cost of Outings\n" +
-                    "4. Display List of Outings by Type\n" +
+                    "4. Display Costs of Outings by Type\n" +
                     "5. Exit");
 
                 string input = Console.ReadLine();
@@ -50,7 +50,7 @@ namespace CompanyOutings_Console
                         break;
                     case "3":
                         //Display Total Cost of Outings
-                      //  TotalCostOfOutings();
+                        TotalCostOfOutings();
                         break;
                     case "4":
                         //Display Cost of Outing by Outing Type
@@ -110,27 +110,27 @@ namespace CompanyOutings_Console
             if (outingAsInt == 1)
             {
                 golf.TypeOfOuting = (OutingType)outingAsInt;
-              // outings.Add(golf);
+                // outings.Add(golf);
 
                 Console.WriteLine("Enter the Date of the Event: (mm/dd/yyyy)");
                 DateTime dateinput = DateTime.Parse(Console.ReadLine());
-                golf.DateOfOuting= dateinput;
-               // outings.Add(golf);
+                golf.DateOfOuting = dateinput;
+                // outings.Add(golf);
 
 
                 Console.WriteLine("Enter the Number People who attended the event:");
                 int peopleAttended = int.Parse(Console.ReadLine());
                 golf.NumberOfPeople = peopleAttended;
-               // outings.Add(golf);
+                // outings.Add(golf);
 
                 Console.WriteLine("Enter the Cost of the Event per person:");
                 double costperperson = double.Parse(Console.ReadLine());
-                golf.CostPerPerson=costperperson;
-               // outings.Add(golf);
+                golf.CostPerPerson = costperperson;
+                // outings.Add(golf);
 
                 golf.CostPerEvent();
                 _outingsRepo._listOfOutings.Add(golf);
-               // outings.Add(golf);
+                // outings.Add(golf);
             }
             if (outingAsInt == 2)
             {
@@ -139,38 +139,38 @@ namespace CompanyOutings_Console
 
                 Console.WriteLine("Enter the Date of the Event: (mm/dd/yyy)");
                 DateTime dateinput = DateTime.Parse(Console.ReadLine());
-                bowl.DateOfOuting= dateinput;
+                bowl.DateOfOuting = dateinput;
 
 
                 Console.WriteLine("Enter the Number People who attended the event:");
                 int peopleAttended = int.Parse(Console.ReadLine());
-                bowl.NumberOfPeople= peopleAttended;
+                bowl.NumberOfPeople = peopleAttended;
 
 
                 Console.WriteLine("Enter the Cost of the Event per person:");
                 double costperperson = double.Parse(Console.ReadLine());
-                bowl.CostPerPerson= costperperson;
+                bowl.CostPerPerson = costperperson;
                 bowl.CostPerEvent();
                 _outingsRepo._listOfOutings.Add(bowl);
             }
             if (outingAsInt == 3)
             {
                 amuse.TypeOfOuting = (OutingType)outingAsInt;
-               //outings.Add(amuse);
+                //outings.Add(amuse);
 
                 Console.WriteLine("Enter the Date of the Event: (mm/dd/yyy)");
                 DateTime dateinput = DateTime.Parse(Console.ReadLine());
-                amuse.DateOfOuting= dateinput;
+                amuse.DateOfOuting = dateinput;
 
 
                 Console.WriteLine("Enter the Number People who attended the event:");
                 int peopleAttended = int.Parse(Console.ReadLine());
-                amuse.NumberOfPeople= peopleAttended;
+                amuse.NumberOfPeople = peopleAttended;
 
 
                 Console.WriteLine("Enter the Cost of the Event per person:");
                 double costperperson = double.Parse(Console.ReadLine());
-                amuse.CostPerPerson=costperperson;
+                amuse.CostPerPerson = costperperson;
                 amuse.CostPerEvent();
                 _outingsRepo._listOfOutings.Add(amuse);
             }
@@ -181,43 +181,41 @@ namespace CompanyOutings_Console
 
                 Console.WriteLine("Enter the Date of the Event: (mm/dd/yyy)");
                 DateTime dateinput = DateTime.Parse(Console.ReadLine());
-                concert.DateOfOuting=dateinput;
+                concert.DateOfOuting = dateinput;
 
 
                 Console.WriteLine("Enter the Number People who attended the event:");
                 int peopleAttended = int.Parse(Console.ReadLine());
-                concert.NumberOfPeople=peopleAttended;
+                concert.NumberOfPeople = peopleAttended;
 
 
                 Console.WriteLine("Enter the Cost of the Event per person:");
                 double costperperson = double.Parse(Console.ReadLine());
-                concert.CostPerPerson=costperperson;  
+                concert.CostPerPerson = costperperson;
                 concert.CostPerEvent();
                 _outingsRepo._listOfOutings.Add(concert);
             }
         }
+        public void TotalCostOfOutings()
+        {
+            Console.Clear();
+            List<double> totalslist = _outingsRepo.GetListOfOutingsRunningTotal();
+            double totalSum = totalslist.Sum();
+
+            Console.WriteLine($"Total Cost of outings is: ${totalSum}.");
 
 
-        //Helper
 
-        //public void TotalCostOfOutings()
-        //{
-        //      List<IOutings> listOfOutings = _outingsRepo.GetListOfOutings();
-            
-
-        //    foreach (IOutings outings in listOfOutings)
-        //    {
-        //        double instance = outings.CostPerEvent();
-        //        double totalCostOfEvents= outings.CostPerEvent()*
-                
-        //        Console.WriteLine($"Total Cost of outings is:  {totalCostOfEvents}. ");
-        //    }
-            
-
-        //}
+        }
         public void TotalCostPerOuting()
         {
+            Console.Clear();
             List<IOutings> listOfOutings = _outingsRepo.GetListOfOutings();
+            List<double> listOfBowlCosts = _outingsRepo.GetListOfBowlOutingsRunningTotal();
+            List<double> listOfGolfCosts = _outingsRepo.GetListOfGolfOutingsRunningTotal();
+            List<double> listofAmuseCosts = _outingsRepo.GetListOfAmueOutingsRunningTotal();
+            List<double> listOfConcertCosts = _outingsRepo.GetListOfConcertOutingsRunningTotal();
+
             Console.WriteLine("Enter the Type Of Outing:\n" +
            "1. Golf\n" +
            "2. Bowling\n" +
@@ -226,37 +224,26 @@ namespace CompanyOutings_Console
 
             int type = int.Parse(Console.ReadLine());
 
-          
-            
-                foreach (IOutings outings in listOfOutings)
-                {
-                    if(type == 1 && outings.TypeOfOuting== OutingType.Golf)
-                    {
-                        Console.WriteLine($"The Total Cost for the Golf Events was: ${outings.CostPerEvent()}.");
-                    }
-                    if (type == 2 && outings.TypeOfOuting == OutingType.Bowling)
-                    {
-                    double TotalCostPerEvent = (bowlingOuting.CostPerPerson * bowlingOuting.NumberOfPeople);
-                    Console.WriteLine($"The Total Cost for the Bowling Events was: ${outings.CostPerEvent()}.");
-                    }
-                    if (type == 3 && outings.TypeOfOuting == OutingType.AmusePark)
-                    {
-                    double TotalCostPerEvent = (aPOuting.CostPerPerson * aPOuting.NumberOfPeople);
-                    Console.WriteLine($"The Total Cost for the Amusement Park Events was: ${TotalCostPerEvent}.");
-                    }
-                    if (type == 4 && outings.TypeOfOuting == OutingType.Concert)
-                    {
-                    double TotalCostPerEvent = (concertOuting.CostPerPerson * concertOuting.NumberOfPeople);
-                    Console.WriteLine($"The Total Cost for the Concert Events was: ${TotalCostPerEvent}.");
-                    }
-                }
-                    
-               
+            if (type == 1)
+            {
+                Console.WriteLine($"The Total Cost for the Golf Events was: ${listOfGolfCosts.Sum()}.");
+            }
+            if (type == 2)
+            {
 
-            
-           
-           
-          
+                Console.WriteLine($"The Total Cost for the Bowling Events was: ${listOfBowlCosts.Sum()}.");
+            }
+            if (type == 3)
+            {
+
+                Console.WriteLine($"The Total Cost for the Amusement Park Events was: ${listofAmuseCosts.Sum()}.");
+            }
+            if (type == 4)
+            {
+
+                Console.WriteLine($"The Total Cost for the Concert Events was: ${listOfConcertCosts.Sum()}.");
+            }
+
         }
 
         //Seed List
@@ -266,25 +253,25 @@ namespace CompanyOutings_Console
             var bowl = new Bowling();
             var amuse = new AmusementPark();
             var concert = new Concert();
-           
+
             golf.CostPerPerson = 60;
-            golf.DateOfOuting = new DateTime(2019,03,23);
+            golf.DateOfOuting = new DateTime(2019, 03, 23);
             golf.NumberOfPeople = 300;
             golf.TypeOfOuting = OutingType.Golf;
             golf.CostPerEvent();
             bowl.CostPerPerson = 20;
-            bowl.DateOfOuting = new DateTime(2019,4,20);
+            bowl.DateOfOuting = new DateTime(2019, 4, 20);
             bowl.NumberOfPeople = 100;
             bowl.TypeOfOuting = OutingType.Bowling;
             bowl.CostPerEvent();
             amuse.CostPerPerson = 200;
             amuse.NumberOfPeople = 250;
-            amuse.DateOfOuting = new DateTime(2019,05,22);
+            amuse.DateOfOuting = new DateTime(2019, 05, 22);
             amuse.TypeOfOuting = OutingType.AmusePark;
             amuse.CostPerEvent();
             concert.CostPerPerson = 90;
             concert.NumberOfPeople = 150;
-            concert.DateOfOuting = new DateTime(2019,06,02);
+            concert.DateOfOuting = new DateTime(2019, 06, 02);
             concert.TypeOfOuting = OutingType.Concert;
             concert.CostPerEvent();
 
@@ -293,9 +280,9 @@ namespace CompanyOutings_Console
             _outingsRepo._listOfOutings.Add(amuse);
             _outingsRepo._listOfOutings.Add(concert);
 
-            
+
 
         }
-        
+
     }
 }
