@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("GreenPlan_Respository")]
+[assembly: AssemblyTitle("CompanyOutings_Repository")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("GreenPlan_Respository")]
+[assembly: AssemblyProduct("CompanyOutings_Repository")]
 [assembly: AssemblyCopyright("Copyright ©  2020")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("83db5010-dfac-43fa-b149-ad171ec789b5")]
+[assembly: Guid("20a64f31-83c5-49d0-94ff-ea6fff96d767")]
 
 // Version information for an assembly consists of the following four values:
 //

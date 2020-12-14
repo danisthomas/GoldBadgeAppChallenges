@@ -4,12 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CompanyOutings_Console
+namespace CompanyOutings_Repository
 {
-    class Program
+    class CompanyOutingsRepository
     {
-        static void Main(string[] args)
-        {
-        }
     }
 }

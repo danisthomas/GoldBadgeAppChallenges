@@ -6,10 +6,7 @@ using System.Threading.Tasks;
 
 namespace CompanyOutings_Console
 {
-    class Program
+    class ProgramUI
     {
-        static void Main(string[] args)
-        {
-        }
     }
 }

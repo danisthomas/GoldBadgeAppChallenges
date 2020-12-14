@@ -1,10 +1,10 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 
-namespace GreenPlan_Tests
+namespace CompanyOutings_Tests
 {
     [TestClass]
-    public class UnitTest1
+    public class CompanyOutingsTests
     {
         [TestMethod]
         public void TestMethod1()

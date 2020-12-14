@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{8459C511-BCE6-4CA8-9B4D-6FE8B5D7F0F2}</ProjectGuid>
+    <ProjectGuid>{FC9080CA-A9A0-4E49-8B05-1AD4A4E48618}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <RootNamespace>CompanyOutings_Console</RootNamespace>
     <AssemblyName>CompanyOutings_Console</AssemblyName>
@@ -44,10 +44,17 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Program.cs" />
+    <Compile Include="ProgramUI.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CompanyOutings_Repository\CompanyOutings_Repository.csproj">
+      <Project>{c518a9ca-c1d0-4332-8d6a-05a6dec0878c}</Project>
+      <Name>CompanyOutings_Repository</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
