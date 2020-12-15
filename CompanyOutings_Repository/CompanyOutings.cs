@@ -18,11 +18,7 @@ namespace CompanyOutings_Repository
         double CostPerPerson { get; set; }
         int NumberOfPeople { get; set; }
         DateTime DateOfOuting { get; set; }
-
         double CostPerEvent();
-
-       // double OutingCostPerEvent { get; set; }
-
         OutingType TypeOfOuting {get; set;}
 
     }
@@ -32,9 +28,6 @@ namespace CompanyOutings_Repository
         public double CostPerPerson { get; set; }
         public int NumberOfPeople { get; set; }
         public DateTime DateOfOuting { get; set; }
-
-       // public double OutingCostPerEvent {get; set;}
-
         public OutingType TypeOfOuting { get; set; }
         public double CostPerEvent()
         {
@@ -48,8 +41,7 @@ namespace CompanyOutings_Repository
     {
         public double CostPerPerson { get; set; }
         public int NumberOfPeople { get; set; }
-        public DateTime DateOfOuting { get; set; }
-      //  public double OutingCostPerEvent { get; set; }
+        public DateTime DateOfOuting { get; set; }      
         public OutingType TypeOfOuting { get; set; }
         public double CostPerEvent()
         {
@@ -63,7 +55,6 @@ namespace CompanyOutings_Repository
         public double CostPerPerson { get ; set; }
         public int NumberOfPeople { get ; set ; }
         public DateTime DateOfOuting { get ; set; }
-     //   public double OutingCostPerEvent { get ; set ; }
         public OutingType TypeOfOuting { get; set; }
         public double CostPerEvent()
         {
@@ -76,7 +67,6 @@ namespace CompanyOutings_Repository
         public double CostPerPerson { get ; set ; }
         public int NumberOfPeople { get; set ; }
         public DateTime DateOfOuting { get ; set; }
-      //  public double OutingCostPerEvent { get ; set; }
         public OutingType TypeOfOuting { get; set; }
         public double CostPerEvent()
         {

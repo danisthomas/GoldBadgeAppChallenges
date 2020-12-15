@@ -7,7 +7,6 @@ namespace Cafe_Tests
     [TestClass]
     public class CafeTest
     {
-
         private CafeRepository _menu;
         private CafeMenuItems _meal;
 

@@ -19,21 +19,14 @@ namespace Claims_Repository
         public void AddClaimsToList(Claims content)
         {
             _listOfClaims.Add(content);
-
-
-            
-
-                claimsQueue.Enqueue(content) ;
-           
+            claimsQueue.Enqueue(content) ;          
         }
 
         //Read
-        
-
+ 
         public List<Claims> GetListOfClaims() 
         {
-           return _listOfClaims;
-            
+           return _listOfClaims;            
         }
 
         public Queue<Claims> GetQueueOfClaims()
@@ -54,19 +47,5 @@ namespace Claims_Repository
         {
             claimsQueue.Peek();
         }
-
-        //helper
-
-       // public void Queue()
-       // {
-
-       // }
-
-
     }
-
-   
-
-
-
 }

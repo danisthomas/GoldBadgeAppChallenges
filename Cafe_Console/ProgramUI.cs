@@ -20,7 +20,6 @@ namespace Cafe_Console
         {
             SeedMenuList();
             Menu();
-
         }
 
         private void Menu()
@@ -65,16 +64,11 @@ namespace Cafe_Console
                     default:
                         Console.WriteLine("Please enter a valid number.");
                         break;
-
-
                 }
                 Console.WriteLine("Please press any key to continue....");
                 Console.ReadKey();
                 Console.Clear();
-
-
             }
-
         }
 
         //Create New Menu Item
@@ -99,7 +93,6 @@ namespace Cafe_Console
              menuItem.Price = double.Parse(Console.ReadLine());
 
             _contentcafeRepo.AddMealsToMenu(menuItem);
-
         }
 
         //View List of Meals on Menu
@@ -117,14 +110,13 @@ namespace Cafe_Console
                     $"Price: ${menuItems.Price}\n");
             }
         }
-        //Update List of Meal on Menu
 
+        //Update List of Meal on Menu
         public void UpdateListOfMenuItems()
         {
             Console.Clear();
             ViewListOfMenuItems();
-
-            
+           
             Console.WriteLine("Enter the MealID of the Menu item you would like to update: (1,2,3, etc...)");
             int itemToUpdate = int.Parse(Console.ReadLine());
 

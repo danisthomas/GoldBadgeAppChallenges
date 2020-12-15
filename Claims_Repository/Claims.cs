@@ -13,12 +13,9 @@ namespace Claims_Repository
         Car = 1,
         Home,
         Theft
-
     }
     public class Claims
     {
-
-
         public int ClaimID { get; set; }
         public ClaimType TypeOfClaim { get; set; }
 
@@ -28,7 +25,6 @@ namespace Claims_Repository
 
         public DateTime DateOfClaim { get; set; }
         public bool IsValid { get; set; }
-
 
         public Claims() { }
 
