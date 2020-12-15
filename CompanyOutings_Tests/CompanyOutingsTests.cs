@@ -14,11 +14,7 @@ namespace CompanyOutings_Tests
         Concert concert = new Concert();
 
         private CompanyOutingsRepository _repo;
-        //private Golf _golfouting;
-        //private AmusementPark _aPOuting;
-        //private Concert _concertOuting;
-        //private Bowling _bowlingOuting; 
-
+       
         [TestInitialize]
         public void TestMethod1()
         {
