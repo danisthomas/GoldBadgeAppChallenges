@@ -20,7 +20,7 @@ Create new insurance claims for Home, Car and Theft. It includes properties of C
 
 How to Use:
 
-Simple start the console application and select the menu item you would like to utilize. The application will show you the claims in the queue and will prompt you as too what to do next. You will need all of the data for the claim to enter a new one of course.
+Simply start the console application and select the menu item you would like to utilize. The application will show you the claims in the queue and will prompt you as too what to do next. You will need all of the data for the claim to enter a new one of course.
 
 Contact:
 
