@@ -72,7 +72,7 @@ namespace Badges_Console
 
             Badges newBadge = new Badges();
             List<string> doorList = new List<string>();
-            //doorList = badge.DoorNames;
+           
             newBadge.DoorNames = doorList;
 
             Console.Clear();

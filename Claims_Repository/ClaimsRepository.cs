@@ -38,8 +38,7 @@ namespace Claims_Repository
 
         public void  DeleteClaimFromList()
         {
-           Claims peekClaim = claimsQueue.Peek();
-           //List<Claims> = GetListOfClaims(claim);
+           Claims peekClaim = claimsQueue.Peek();          
             _listOfClaims.Remove(peekClaim);
         }
         //helper
