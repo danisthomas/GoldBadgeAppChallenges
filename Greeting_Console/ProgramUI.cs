@@ -16,10 +16,6 @@ namespace Greeting_Console
         private List<IGreeting> currentList = new List<IGreeting>();
         private List<IGreeting> potentialList = new List<IGreeting>();
         private Customer customer = new Customer();
-        
-
-
-
 
         public void Run()
         {
