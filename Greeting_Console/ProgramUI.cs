@@ -86,7 +86,6 @@ namespace Greeting_Console
                 Console.WriteLine("Press any key to continue.....");
                 Console.ReadKey();
                 Console.Clear();
-
             }
         }
         public void CreateNewCustomer()
@@ -107,14 +106,12 @@ namespace Greeting_Console
             newCustomer.Email = Console.ReadLine();
 
             Console.WriteLine("Enter the Customer's last invoice Date:");
-            DateTime input = Convert.ToDateTime(Console.ReadLine());
-           // DateTime input = (DateTime)inputAsString; 
-         
+            DateTime input= Convert.ToDateTime(Console.ReadLine());
+                      
             newCustomer.LastInvoice = input;
             newCustomer.TypeOfCustomer = customer.GetTimeSpan(newCustomer);
 
             _greetingRepo.AddNewCustomer(newCustomer);
-
         }
 
         public void UpdateListOfCustomers()
@@ -137,15 +134,10 @@ namespace Greeting_Console
 
             Console.WriteLine("enter updated LastInvoice date (mm/dd/yyyy)");
             updatedCustomer.LastInvoice = DateTime.Parse(Console.ReadLine());
+            
             customer.TypeOfCustomer = customer.GetTimeSpan(updatedCustomer);
-            //Console.WriteLine("Enter the updated Customer Type:\n" +
-            //    "1. Past\n" +
-            //    "2. Current\n" +
-            //    "3. Potential");
-            //int updatedCustomerTypeAsInt = int.Parse(Console.ReadLine());
-            //updatedCustomer.TypeOfCustomer = (CustomerType)updatedCustomerTypeAsInt;
-
-            bool wasUpdated = _greetingRepo.UpdateCustomerByID(customer.CustomerID, updatedCustomer);
+          
+            bool wasUpdated = _greetingRepo.UpdateCustomerByID(customerToUpdate, updatedCustomer);
             if(wasUpdated)  
             {
                 Console.WriteLine("Customer was successfully updated.");
@@ -184,12 +176,10 @@ namespace Greeting_Console
 
 
                     foreach (IGreeting customer in pastList)
-                    {
-
-                
+                    {                
                         SmtpClient cv = new SmtpClient("smtp.live.com", 25);
-                    cv.EnableSsl = true;
-                    cv.Credentials = new NetworkCredential("email", "password");
+                        cv.EnableSsl = true;
+                        cv.Credentials = new NetworkCredential("email", "password");
                     try
                     {
                         cv.Send($"sender email", customer.Email, "Please come Back", "It's been a long time since we've heard from you!");
@@ -233,7 +223,6 @@ namespace Greeting_Console
         public void SendEmailToPotentialCustomers()
 
         {
-
             if (customer.TypeOfCustomer == CustomerType.Potential)
             {
                 _greetingRepo.AddCustomerToCorrectList();
@@ -280,24 +269,17 @@ namespace Greeting_Console
             customer1.LastName = "Doe";
             customer1.Email = "JDoe@hotmail.com";
             customer1.LastInvoice = new DateTime(2019, 02, 13);
-            // customer1.TypeOfCustomer = CustomerType.Past;
-            
 
             customer2.CustomerID = 2;
             customer2.FirstName = "Joan";
             customer2.LastName = "Jett";
             customer2.Email = "JJett@hotmail.com";
             customer2.LastInvoice = new DateTime(2020, 12, 01);
-            // customer2.TypeOfCustomer = CustomerType.Current;
-            
-
+ 
             customer3.CustomerID = 3;
             customer3.FirstName = "John";
             customer3.LastName = "Doe";
             customer3.Email = "JDoe@gmail.com";
-           
-            // customer3.TypeOfCustomer = CustomerType.Potential;
-            
 
             _greetingRepo.AddNewCustomer(customer1);
             _greetingRepo.AddNewCustomer(customer2);
@@ -306,9 +288,7 @@ namespace Greeting_Console
             customer2.TypeOfCustomer = customer.GetTimeSpan(customer2);
             customer3.TypeOfCustomer = customer.GetTimeSpan(customer3);
 
-
         }
          
-
     }
 }

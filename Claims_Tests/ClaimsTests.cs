@@ -40,5 +40,6 @@ namespace Claims_Tests
             //Assert
             Assert.IsNotNull(contentFromDirectory);
         }
+
     }
 }
