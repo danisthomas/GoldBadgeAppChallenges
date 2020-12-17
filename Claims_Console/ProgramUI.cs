@@ -56,7 +56,9 @@ namespace Claims_Console
                         Console.WriteLine("Press enter a valid number.");
                         break;
                 }
+                Console.ForegroundColor = ConsoleColor.Cyan;
                 Console.WriteLine("Press any key to continue.....");
+                Console.ResetColor();
                 Console.ReadKey();
                 Console.Clear();
 
@@ -146,8 +148,10 @@ namespace Claims_Console
                     
                     Console.Clear();
 
-                }          
+                }
+                    Console.ForegroundColor = ConsoleColor.Cyan;
                     Console.WriteLine("Press any key to return to the menu:");
+                    Console.ResetColor();
                     Console.ReadKey();
 
             }
@@ -189,13 +193,17 @@ namespace Claims_Console
             if (tsdiff.Days <= 30)
             {
                 newContent.IsValid = true;
+                Console.ForegroundColor = ConsoleColor.Green;
                 Console.WriteLine("This Claim is Valid.");
+                Console.ResetColor();
                
             }
             else
             {
                 newContent.IsValid = false;
+                Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine("This claim is not Valid.");
+                Console.ResetColor();
             }
             _claimsRepo.AddClaimsToList(newContent);
             

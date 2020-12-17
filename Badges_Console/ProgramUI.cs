@@ -60,7 +60,9 @@ namespace Badges_Console
                         break;
                 }
 
+                Console.ForegroundColor = ConsoleColor.Cyan;
                 Console.WriteLine("Press any key to continue.....");
+                Console.ResetColor();
                 Console.ReadKey();
                 Console.Clear();
             }
@@ -101,8 +103,10 @@ namespace Badges_Console
             }
             
             _contentBadgesRepository.CreateNewBadge(newBadge);
-          
+
+            Console.ForegroundColor = ConsoleColor.Cyan;
             Console.WriteLine("Press any key to return to Menu:");
+            Console.ResetColor();
             Console.ReadKey();
         }
 

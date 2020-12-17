@@ -65,7 +65,9 @@ namespace CompanyOutings_Console
                         break;
 
                 }
+                Console.ForegroundColor = ConsoleColor.Cyan;
                 Console.WriteLine("Press any key to continue.....");
+                Console.ResetColor();
                 Console.ReadKey();
                 Console.Clear();
 

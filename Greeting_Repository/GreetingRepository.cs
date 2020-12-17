@@ -75,7 +75,6 @@ namespace Greeting_Repository
                 oldContent.Email = newContent.Email;
                 oldContent.LastInvoice = newContent.LastInvoice;
                 
-
                 return true;
             }
             else

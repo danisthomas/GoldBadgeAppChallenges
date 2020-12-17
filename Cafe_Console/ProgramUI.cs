@@ -62,10 +62,14 @@ namespace Cafe_Console
                         keepRunning = false;
                         break;
                     default:
+                        Console.ForegroundColor = ConsoleColor.Red;
                         Console.WriteLine("Please enter a valid number.");
+                        Console.ResetColor();
                         break;
                 }
+                Console.ForegroundColor = ConsoleColor.Cyan;
                 Console.WriteLine("Please press any key to continue....");
+                Console.ResetColor();
                 Console.ReadKey();
                 Console.Clear();
             }
@@ -141,11 +145,15 @@ namespace Cafe_Console
             bool wasUpdated = _contentcafeRepo.UpdateMenuItemsbyMealId(itemToUpdate, newMeal);
             if (wasUpdated)
             {
+                Console.ForegroundColor = ConsoleColor.Green;
                 Console.WriteLine("Menu item was updated!");
+                Console.ResetColor();
             }
             else
             {
+                Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine("Could not update Menu item.");
+                Console.ResetColor();
             }
 
             ViewListOfMenuItems();
@@ -166,11 +174,15 @@ namespace Cafe_Console
 
             if (wasDeleted)
             {
+                Console.ForegroundColor = ConsoleColor.Green;
                 Console.WriteLine("The Menu item was successfully removed from the list.");
+                Console.ResetColor();
             }
             else
             {
+                Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine("The Menu item could not be removed from the list.");
+                Console.ResetColor();
             }
         }
 
