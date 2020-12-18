@@ -21,6 +21,7 @@ namespace Greeting_Repository
             listOfCustomers.Add(customer);
         }
 
+        //Add
         public void AddCustomerToCorrectList()
         {
             foreach (IGreeting customer in listOfCustomers)
