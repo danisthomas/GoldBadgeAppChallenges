@@ -104,12 +104,16 @@ namespace Greeting_Console
             newCustomer.Email = Console.ReadLine();
 
             Console.WriteLine("Enter the Customer's last invoice Date:");
-            DateTime input= Convert.ToDateTime(Console.ReadLine());
-                      
+            DateTime input = Convert.ToDateTime(Console.ReadLine());
+
             newCustomer.LastInvoice = input;
             newCustomer.TypeOfCustomer = customer.GetTimeSpan(newCustomer);
 
             _greetingRepo.AddNewCustomer(newCustomer);
+
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine("Customer was successfully added!");
+            Console.ResetColor();
         }
 
         public void UpdateListOfCustomers()
@@ -132,17 +136,21 @@ namespace Greeting_Console
 
             Console.WriteLine("enter updated LastInvoice date (mm/dd/yyyy)");
             updatedCustomer.LastInvoice = DateTime.Parse(Console.ReadLine());
-            
+
             customer.TypeOfCustomer = customer.GetTimeSpan(updatedCustomer);
-          
+
             bool wasUpdated = _greetingRepo.UpdateCustomerByID(customerToUpdate, updatedCustomer);
-            if(wasUpdated)  
+            if (wasUpdated)
             {
+                Console.ForegroundColor = ConsoleColor.Green;
                 Console.WriteLine("Customer was successfully updated.");
+                Console.ResetColor();
             }
             else
             {
+                Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine("Could not update Customer.");
+                Console.ResetColor();
             }
         }
         public void DeleteExistingCustomer()
@@ -157,89 +165,139 @@ namespace Greeting_Console
 
             if (wasDeleted)
             {
+                Console.ForegroundColor = ConsoleColor.Green;
                 Console.WriteLine("The Customer was successfully removed from the list.");
+                Console.ResetColor();
             }
             else
             {
+                Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine("The Customer could not be removed from the list.");
+                Console.ResetColor();
             }
         }
         public void SendEmailToPastCustomers()
         {
+            AddCustomerToCorrectList();
 
-            if (customer.TypeOfCustomer == CustomerType.Past)
+
+
+
+
+
+            foreach (IGreeting customer in pastList)
             {
-                _greetingRepo.AddCustomerToCorrectList();
-            }
+                if (customer.TypeOfCustomer == CustomerType.Past)
+                {
 
-
-                    foreach (IGreeting customer in pastList)
-                    {                
-                        SmtpClient cv = new SmtpClient("smtp.live.com", 25);
-                        cv.EnableSsl = true;
-                        cv.Credentials = new NetworkCredential("email", "password");
                     try
                     {
-                        cv.Send($"sender email", customer.Email, "Please come Back", "It's been a long time since we've heard from you!");
+                        MailMessage mail = new MailMessage();
+                        SmtpClient cv = new SmtpClient("smtp.mailtrap.io", 2525);
+
+                        mail.From = new MailAddress("marketing@KomodoInsurance.com");
+                        mail.To.Add(customer.Email);
+                        mail.Subject = "Please come Back";
+                        mail.Body = "It's been a long time since we've heard from you!";
+
+                       
+                        cv.EnableSsl = true;
+                        cv.Credentials = new NetworkCredential("1e66340aa46f8f", "86345512d698a8");
+                        cv.Send(mail);
+
+                        Console.ForegroundColor = ConsoleColor.Green;
                         Console.WriteLine("Email sent successfully");
+                        Console.ResetColor();
                     }
                     catch (Exception ex)
                     {
+                        Console.ForegroundColor = ConsoleColor.Red;
                         Console.WriteLine("Email can't send successfully under below reasons");
                         Console.WriteLine(ex.Message);
+                        Console.ResetColor();
                     }
-                    }
-            
+                }
+            }
         }
 
         public void SendEmailToCurrentCustomers()
         {
-
-            if(customer.TypeOfCustomer == CustomerType.Current)
-            {
-                _greetingRepo.AddCustomerToCorrectList();
-            }
+            AddCustomerToCorrectList();
 
             foreach (IGreeting customer in currentList)
             {
+                if (customer.TypeOfCustomer == CustomerType.Current)
+                {
 
-                SmtpClient cv = new SmtpClient("smtp.live.com", 25);
-                cv.EnableSsl = true;
-                cv.Credentials = new NetworkCredential("email", "password");
-                try
-                {
-                    cv.Send($"sender email", customer.Email, "Thank You!", "Thank you for your work with us. We appreciate your loyalty. Here's a coupon!");
-                    Console.WriteLine("email sent successfully");
+                    try
+                    {
+                        MailMessage mail = new MailMessage();
+                        SmtpClient cv = new SmtpClient("smtp.mailtrap.io", 2525);
+
+                        mail.From = new MailAddress("Marketing@KomodoInsurance.com");
+                        mail.To.Add(customer.Email);
+                        mail.Subject = "Thank You!";
+                        mail.Body = "Thank you for your work with us. We appreciate your loyalty. Here's a coupon!";
+
+                        
+                        cv.EnableSsl = true;
+                        cv.Credentials = new NetworkCredential("1e66340aa46f8f", "86345512d698a8");
+                        cv.Send(mail);
+
+                        Console.ForegroundColor = ConsoleColor.Green;
+                        Console.WriteLine("email sent successfully");
+                        Console.ResetColor();
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.WriteLine("Email can't send successfully for the following reasons");
+                        Console.WriteLine(ex.Message);
+                        Console.ResetColor();
+                    }
                 }
-                catch (Exception ex)
-                {
-                    Console.WriteLine("Email can't send successfully underr below reasons");
-                    Console.WriteLine(ex.Message);
-                }
+
             }
+
         }
         public void SendEmailToPotentialCustomers()
-
         {
-            if (customer.TypeOfCustomer == CustomerType.Potential)
-            {
-                _greetingRepo.AddCustomerToCorrectList();
-            }
+            AddCustomerToCorrectList();
+
+
+
             foreach (IGreeting customer in potentialList)
             {
+                if (customer.TypeOfCustomer == CustomerType.Potential)
+                {
 
-                SmtpClient cv = new SmtpClient("smtp.live.com", 25);
-                cv.EnableSsl = true;
-                cv.Credentials = new NetworkCredential("email", "password");
-                try
-                {
-                    cv.Send($"sender email", customer.Email, "Hello!", "We currently have the lowest rates on Helicopter Insurance!");
-                    Console.WriteLine("email sent successfully");
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine("Email can't send successfully under below reasons");
-                    Console.WriteLine(ex.Message);
+                    try
+                    {
+                        MailMessage mail = new MailMessage();
+                        SmtpClient cv = new SmtpClient("smtp.mailtrap.io",2525);
+
+                        mail.From = new MailAddress("marketing@KomodoInsurance.com");
+                        mail.To.Add(customer.Email);
+                        mail.Subject = "Hello!";
+                        mail.Body = "We currently have the lowest rates on Helicopter Insurance!";
+
+                        
+                        cv.EnableSsl = true;
+                        cv.Credentials = new System.Net.NetworkCredential("1e66340aa46f8f", "86345512d698a8");
+                        cv.Send(mail);
+
+                        Console.ForegroundColor = ConsoleColor.Green;
+                        Console.WriteLine("email sent successfully");
+                        Console.ResetColor();
+
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.WriteLine("Email can't send successfully under below reasons");
+                        Console.WriteLine(ex.Message);
+                        Console.ResetColor();
+                    }
                 }
             }
         }
@@ -251,8 +309,29 @@ namespace Greeting_Console
             _greetingRepo.AssignEmailType();
             Console.WriteLine($"{"Customer ID:",-25}{"First Name",-25}{"Last Name",-25}{"Type",-25}{"Email",-25}\n");
             foreach (IGreeting customer in listOfAllCustomers)
-            {                
-                Console.WriteLine($"{customer.CustomerID,-25}{customer.FirstName,-25}{customer.LastName,-25}{customer.TypeOfCustomer,-25}{customer.EmailType,-25}" );
+            {
+                Console.WriteLine($"{customer.CustomerID,-25}{customer.FirstName,-25}{customer.LastName,-25}{customer.TypeOfCustomer,-25}{customer.EmailType,-25}");
+            }
+        }
+
+        public void AddCustomerToCorrectList()
+        {
+            List<IGreeting> listOfAllCustomers = _greetingRepo.GetListOfAllCustomers();
+            foreach (IGreeting customer in listOfAllCustomers)
+            {
+                if (customer.TypeOfCustomer == CustomerType.Current)
+                {
+                    currentList.Add(customer);
+                }
+                if (customer.TypeOfCustomer == CustomerType.Past)
+                {
+                    pastList.Add(customer);
+
+                }
+                if (customer.TypeOfCustomer == CustomerType.Potential)
+                {
+                    potentialList.Add(customer);
+                }
             }
         }
         //Seed List
@@ -271,9 +350,9 @@ namespace Greeting_Console
             customer2.CustomerID = 2;
             customer2.FirstName = "Joan";
             customer2.LastName = "Jett";
-            customer2.Email = "JJett@hotmail.com";
+            customer2.Email = "jjett@hotmail.com";
             customer2.LastInvoice = new DateTime(2020, 12, 01);
- 
+
             customer3.CustomerID = 3;
             customer3.FirstName = "John";
             customer3.LastName = "Doe";
@@ -287,6 +366,6 @@ namespace Greeting_Console
             customer3.TypeOfCustomer = customer.GetTimeSpan(customer3);
 
         }
-         
+
     }
 }
